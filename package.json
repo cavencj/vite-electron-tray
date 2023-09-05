@@ -1,25 +1,50 @@
 {
-  "name": "vite-temp",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "vite-electron-tray",
+  "version": "1.0.0",
+  "main": "tray.js",
+  "repository": "https://github.com/cavencj/vite-electron-tray.git",
+  "author": "Caven Chen <cavencj@mail.com>",
+  "license": "MIT",
+  "_id": "vite-electron-tray@1.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "electron-builder --win --x64"
   },
-  "dependencies": {
-    "vue": "^3.3.4"
+  "build": {
+    "productName": "vue-electron-tray",
+    "appId": "dvgis.vite-electron-tray",
+    "copyright": "dvgis©2023",
+    "directories": {
+      "output": "dist"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    },
+    "win": {
+      "extraFiles": [
+        {
+          "from": "./packages/server/dist/server.exe",
+          "to": "server.exe"
+        },
+        {
+          "from": "./logo.ico",
+          "to": "logo.ico"
+        },
+        {
+          "from": "./packages/server/xdg-open",
+          "to": "xdg-open"
+        },
+        {
+          "from": "./packages/pages/dist",
+          "to": "views"
+        }
+      ]
+    }
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
-    "eslint": "^8.46.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-vue": "^9.16.1",
-    "prettier": "^3.0.1",
-    "sass": "^1.64.2",
-    "vite": "^4.4.5",
-    "vite-plugin-eslint": "^1.8.1"
+    "electron": "^26.1.0",
+    "electron-builder": "^24.6.4",
+    "shelljs": "^0.8.5"
   }
 }

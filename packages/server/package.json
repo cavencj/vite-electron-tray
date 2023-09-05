@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "node src/index.js",
+    "build": "pkg . -o dist/server.exe"
+  },
+  "bin": "src/index.js",
+  "pkg": {
+    "scripts": [],
+    "assets": [
+      "node_modules/figlet/fonts/Standard.flf"
+    ],
+    "targets": [
+      "node16-win-x64"
+    ]
+  },
+  "devDependencies": {
+    "express": "^4.18.2",
+    "node-banner": "^1.4.0",
+    "open": "^8.4.2",
+    "pkg": "^5.8.1",
+    "portscanner": "^2.2.0"
+  }
+}
